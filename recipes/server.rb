@@ -16,3 +16,12 @@ end
 service 'httpd' do
   action [ :enable, :start ]
 end
+
+execute 'create a script' do
+  user "root"
+  command "
+  mkdir -p /var/www/mysites/ /
+  chown -R apache /var/www/mysites/
+  "
+  creates "/var/www/mysites/"
+end
